@@ -134,6 +134,13 @@ class FormManager extends Component{
             installmentRate: 4 ,otherDebtors:'A101',purpose:'A44'})
     };
 
+    sexMale = () => {
+        return ! (this.state.sex === 'M')
+    };
+
+    sexFemale = () => {
+        return ! (this.state.sex === 'F')
+    }
 
     render() {
         return(
@@ -148,8 +155,8 @@ class FormManager extends Component{
                             name: 'sex',
                             id: 'sex-simple',
                         }}>
-                    <MenuItem value={'F'}>Male</MenuItem>
-                    <MenuItem value={'M'}>Female</MenuItem>
+                    <MenuItem value={'M'}>Male</MenuItem>
+                    <MenuItem value={'F'}>Female</MenuItem>
                 </Select>
                 </InputLabel><br/>
                 <InputLabel htmlFor="Personal Status-simple">Personal Status:
@@ -160,11 +167,11 @@ class FormManager extends Component{
                                 name: 'personalStatus',
                                 id: 'Personal Status-simple',
                             }}>
-                        <MenuItem value={'A91'}>divorced/separated(Male)</MenuItem>
-                        <MenuItem value={'A92'}>divorced/separated/married(Female)</MenuItem>
-                        <MenuItem value={'A93'}>Single(Male)</MenuItem>
-                        <MenuItem value={'A94'}>married/widowed(Male)</MenuItem>
-                        <MenuItem value={'A95'}>single(Female)</MenuItem>
+                        <MenuItem disabled={this.sexMale()} value={'A91'}>divorced/separated</MenuItem>
+                        <MenuItem disabled={this.sexFemale()} value={'A92'}>divorced/separated/married</MenuItem>
+                        <MenuItem disabled={this.sexMale()} value={'A93'}>single</MenuItem>
+                        <MenuItem disabled={this.sexMale()} value={'A94'}>married/widowed</MenuItem>
+                        <MenuItem disabled={this.sexFemale()} value={'A95'}>single</MenuItem>
                     </Select>
                 </InputLabel><br/>
                 <InputLabel htmlFor="mainJob-simple">Main job:
